@@ -119,7 +119,7 @@ fi
 if [[ "$*" == "" ]]; then
     # Use the gunicorn server by default, since it's more performant than
     # bottle's default server
-    CMD=("run" "-p" "${PYPISERVER_PORT:-$PORT}" "--server" "gunicorn")
+    CMD=("run" "-p" "${PYPISERVER_PORT:-$PORT}" "-P" "/data/auth/.htpasswd" "--server" "gunicorn")
 else
     # this reassigns the array to the CMD variable
     CMD=( "${@}" )
